@@ -12,6 +12,7 @@ class TodoList extends Component
 		this.state = {
 			items: []
 		};
+		this.itemAdded = this.itemAdded.bind(this);
 	}
 	
 	componentDidMount()
@@ -21,6 +22,13 @@ class TodoList extends Component
 		.then(response => {
 			this.setState({items: response.data});
 		});
+	}
+	
+	itemAdded(newItem)
+	{
+		let {items} = this.state;
+		items.push(newItem);
+		this.setState({items: items});
 	}
 	
 	render()
@@ -36,7 +44,7 @@ class TodoList extends Component
 					}
 				</table>
 				<br/>
-				<TodoCreate />
+				<TodoCreate onAdd={this.itemAdded} />
 			</div>
 		);
 	}
