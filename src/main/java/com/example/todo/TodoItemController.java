@@ -29,13 +29,13 @@ public class TodoItemController
 	}
 	
 	@RequestMapping(method=RequestMethod.GET, value="/todo/{id}")
-	public Optional<TodoItem> show(@PathVariable Long id)
+	public Optional<TodoItem> show(@PathVariable String id)
 	{
 		return repository.findById(id);
 	}
 	
 	@RequestMapping(method=RequestMethod.PUT, value="/todo/{id}")
-	public TodoItem update(@PathVariable Long id, @RequestBody TodoItem todo)
+	public TodoItem update(@PathVariable String id, @RequestBody TodoItem todo)
 	{
 		Optional<TodoItem> optTodo = repository.findById(id);
 		TodoItem t = optTodo.get();
@@ -46,7 +46,7 @@ public class TodoItemController
 	}
 	
 	@RequestMapping(method=RequestMethod.DELETE, value="/contacts/{id}")
-	public String delete(@PathVariable Long id)
+	public String delete(@PathVariable String id)
 	{
 		Optional<TodoItem> optTodo = repository.findById(id);
 		TodoItem todo = optTodo.get();

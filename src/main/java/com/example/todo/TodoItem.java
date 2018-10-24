@@ -4,7 +4,8 @@ import org.springframework.data.annotation.Id;
 
 public class TodoItem 
 {
-	@Id Long id;
+	@Id
+	String id;
 	String text;
 	Boolean completed;
 	
