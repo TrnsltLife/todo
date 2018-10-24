@@ -30,3 +30,17 @@ dependencies {
 	implementation('org.springframework.boot:spring-boot-starter-web')
 	testImplementation('org.springframework.boot:spring-boot-starter-test')
 }
+
+
+//Create a buildReact task and make build depend on it
+task buildReact(type:Exec) {
+	workingDir './frontend'
+	commandLine 'cmd', '/c', 'npm', 'run', 'build'
+}
+
+configure(buildReact) {
+	group = "build"
+	description = "Build the React app and move the results to /src/main/resources/static/"
+}
+
+build.dependsOn buildReact
