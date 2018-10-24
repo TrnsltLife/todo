@@ -25,3 +25,6 @@
 /dist/
 /nbdist/
 /.nb-gradle/
+
+## React Frontend ##
+/frontend/node_modules/
