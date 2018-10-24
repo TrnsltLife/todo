@@ -9,7 +9,6 @@ import {BrowserRouter as Router, Route} from 'react-router-dom';
 ReactDOM.render(
 	<Router>
 		<div>
-			<h1>Todo App</h1>
 			<Route exact path="/" component={App} />
 		</div>
 	</Router>,
