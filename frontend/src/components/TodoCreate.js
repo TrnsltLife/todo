@@ -29,6 +29,8 @@ class TodoCreate extends Component
 		.then((result) => {
 			this.props.onAdd(result.data)
 		});
+		
+		this.setState({text:''}); //reset text to blank
 	}
 	
 	render()
