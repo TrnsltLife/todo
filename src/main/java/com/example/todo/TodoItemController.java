@@ -45,7 +45,7 @@ public class TodoItemController
 		return t;
 	}
 	
-	@RequestMapping(method=RequestMethod.DELETE, value="/contacts/{id}")
+	@RequestMapping(method=RequestMethod.DELETE, value="/todo/{id}")
 	public String delete(@PathVariable String id)
 	{
 		Optional<TodoItem> optTodo = repository.findById(id);
