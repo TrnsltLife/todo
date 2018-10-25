@@ -22,9 +22,8 @@ public class TodoApplication implements CommandLineRunner
 		repository.deleteAll();
 		
 		//Initialize the database with some todo items
-		repository.save(new TodoItem("Phone screen", true));
 		repository.save(new TodoItem("Learn Spring Boot"));
 		repository.save(new TodoItem("Learn React"));
-		repository.save(new TodoItem("Build a Todo App"));
+		repository.save(new TodoItem("Get back to Dan"));
 	}
 }

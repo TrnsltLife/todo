@@ -38,7 +38,7 @@ class TodoCreate extends Component
 		const {text} = this.state;
 		return (
 			<form onSubmit={this.onSubmit}>
-				<input name="text" type="text" value={text} onChange={this.onChange} />
+				<input name="text" type="text" name="text" value={text} onChange={this.onChange} />
 				<button type="submit">Add</button>
 			</form>
 		);
