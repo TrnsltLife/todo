@@ -53,15 +53,19 @@ class TodoList extends Component
 	
 	render()
 	{
+		const paddingStyle = {
+			"padding":"10px"
+		}
+		
 		return (
-			<div>
+			<div style={paddingStyle}>
 				<Grid><Row><Col xs={12} sm={8} md={6} lg={4}>
 				<Panel>
 					<Panel.Heading>
 						<Panel.Title componentClass="h3">To-Do List</Panel.Title>
 					</Panel.Heading>
 					<Panel.Body>
-						<Table striped>
+						<Table stripe>
 							{
 								this.state.items.map(t =>
 									<TodoItem todo={t} onDelete={this.itemDeleted} />
