@@ -6,6 +6,7 @@
 5. >gradle bootRun
 6. That should launch the Spring Boot/React app
 7. Point your browser to http://locahost:8080 to try the To-Do list.
+8. You should also be able to import the project into Spring Tool Suite 4 and build it/launch it from there.
 
 # Referenced Tutorials and Resources
 * https://spring.io/guides/gs/accessing-data-mongodb/#initial
