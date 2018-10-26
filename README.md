@@ -1,3 +1,12 @@
+# Building and Running
+1. This app requires that MongoDB be installed on localhost with the default configuration
+2. After cloning, cd to the root of the app and run the following Gradle commands
+3. >gradle build
+4. That should build the Spring Boot app and also run the "buildReact" task to build the React app.
+5. >gradle bootRun
+6. That should launch the Spring Boot/React app
+7. Point your browser to http://locahost:8080 to try the To-Do list.
+
 # Referenced Tutorials and Resources
 * https://spring.io/guides/gs/accessing-data-mongodb/#initial
 * https://spring.io/guides/gs/accessing-mongodb-data-rest/
