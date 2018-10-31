@@ -31,11 +31,38 @@ dependencies {
 	testImplementation('org.springframework.boot:spring-boot-starter-test')
 }
 
+//Create an installReact task
+task initReact(type: GradleBuild) {
+	tasks = ['npmInstall', 'npmInstallBootstrap']
+}
+
+configure(initReact) {
+	group = "build setup"
+	description = "Install dependencies for the React project"
+}
+
+task npmInstall(type: Exec) {
+	workingDir './frontend'
+	if (System.getProperty('os.name').toLowerCase(Locale.ROOT).contains('windows')) {
+		commandLine 'cmd', '/c', 'npm', 'install'
+	} else {
+		commandLine 'npm', 'install'
+	}
+}
+
+task npmInstallBootstrap(type: Exec) {
+	workingDir './frontend'
+	if (System.getProperty('os.name').toLowerCase(Locale.ROOT).contains('windows')) {
+		commandLine 'cmd', '/c', 'npm', 'install', '--save', 'react-bootstrap', 'bootstrap@3'
+	} else {
+		commandLine 'npm', 'npm', 'install', '--save', 'react-bootstrap', 'bootstrap@3'
+	}
+}
 
 //Create a buildReact task and make build depend on it
-task buildReact(type:Exec) {
-	workingDir './frontend'
-	commandLine 'cmd', '/c', 'npm', 'run', 'build'
+//Also create necessary "sub" tasks buildReactNPM, buildReactDelete, and buildReactCopy
+task buildReact(type: GradleBuild) {
+	tasks = ['buildReactNPM', 'buildReactDelete', 'buildReactCopy']
 }
 
 configure(buildReact) {
@@ -43,4 +70,26 @@ configure(buildReact) {
 	description = "Build the React app and move the results to /src/main/resources/static/"
 }
 
+task buildReactNPM(type:Exec) {
+	workingDir './frontend'
+	if (System.getProperty('os.name').toLowerCase(Locale.ROOT).contains('windows')) {
+		commandLine 'cmd', '/c', 'npm', 'run', 'build'
+	} else {
+		commandLine 'npm', 'run', 'build'
+	}
+}
+
+task buildReactDelete(type: Delete) {
+	delete "src/main/resources/static"
+}
+
+task buildReactCopy(type:Copy) {
+	from "frontend/build"
+	into "src/main/resources/static"
+}
+
 build.dependsOn buildReact
+buildReact.dependsOn buildReactCopy
+buildReactCopy.dependsOn buildReactDelete
+buildReactDelete.dependsOn buildReactNPM
+

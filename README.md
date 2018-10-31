@@ -1,12 +1,30 @@
 # Building and Running
 1. This app requires that MongoDB be installed on localhost with the default configuration
-2. After cloning, cd to the root of the app and run the following Gradle commands
-3. >gradle build
-4. That should build the Spring Boot app and also run the "buildReact" task to build the React app.
-5. >gradle bootRun
-6. That should launch the Spring Boot/React app
-7. Point your browser to http://locahost:8080 to try the To-Do list.
-8. You should also be able to import the project into Spring Tool Suite 4 and build it/launch it from there.
+1. It also requires that npm be installed
+2. After cloning, cd to the root of the app and run the following commands
+
+## Windows:
+```
+gradlew initReact
+gradlew build
+gradlew bootRun
+```
+
+## Mac/Linux:
+(Make sure gradlew is executable and has the right permissions)
+```
+./gradlew initReact
+./gradlew build
+./gradlew bootRun
+```
+
+1. The initReact tasks should run `npm install` and also install bootstrap dependencies.
+2. The `build` taks should build the Spring Boot app and also run the `buildReact` task to build the React app.
+3. The `bootRun` task should launch the Spring Boot/React app.
+4. Point your browser to http://locahost:8080 to try the To-Do list.
+
+## Spring Tool Suite
+You should also be able to import the project into Spring Tool Suite 4 and build it/launch it from there.
 
 # Referenced Tutorials and Resources
 * https://spring.io/guides/gs/accessing-data-mongodb/#initial
